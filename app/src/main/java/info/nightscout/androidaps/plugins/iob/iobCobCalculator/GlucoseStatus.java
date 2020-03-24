@@ -20,6 +20,7 @@ import info.nightscout.androidaps.utils.Round;
  */
 
 public class GlucoseStatus {
+
     @Inject public AAPSLogger aapsLogger;
     @Inject public IobCobCalculatorPlugin iobCobCalculatorPlugin;
 
@@ -43,6 +44,11 @@ public class GlucoseStatus {
     public GlucoseStatus(HasAndroidInjector injector) {
         injector.androidInjector().inject(this);
         this.injector = injector;
+    }
+
+    public GlucoseStatus(AAPSLogger aapsLogger, IobCobCalculatorPlugin iobCobCalculatorPlugin) {
+        this.aapsLogger = aapsLogger;
+        this.iobCobCalculatorPlugin = iobCobCalculatorPlugin;
     }
 
     public GlucoseStatus round() {

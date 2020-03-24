@@ -24,6 +24,7 @@ import info.nightscout.androidaps.logging.AAPSLogger
 import info.nightscout.androidaps.plugins.bus.RxBusWrapper
 import info.nightscout.androidaps.plugins.configBuilder.ProfileFunction
 import info.nightscout.androidaps.plugins.iob.iobCobCalculator.GlucoseStatus
+import info.nightscout.androidaps.plugins.iob.iobCobCalculator.GlucoseStatusFactory
 import info.nightscout.androidaps.plugins.iob.iobCobCalculator.IobCobCalculatorPlugin
 import info.nightscout.androidaps.plugins.iob.iobCobCalculator.events.EventAutosensCalculationFinished
 import info.nightscout.androidaps.utils.DecimalFormatter
@@ -45,7 +46,8 @@ class PersistentNotificationPlugin @Inject constructor(
     private var iobCobCalculatorPlugin: IobCobCalculatorPlugin,
     private var rxBus: RxBusWrapper,
     private var context: Context,
-    private var mainApp: MainApp
+    private var mainApp: MainApp,
+    private val GlucoseStatus: GlucoseStatusFactory
 ) : PluginBase(PluginDescription()
     .mainType(PluginType.GENERAL)
     .neverVisible(true)
@@ -138,7 +140,7 @@ class PersistentNotificationPlugin @Inject constructor(
             var line1_aa: String
             val units = profileFunction.getUnits()
             val lastBG = iobCobCalculatorPlugin.lastBg()
-            val glucoseStatus = GlucoseStatus(injector).getGlucoseStatusData()
+            val glucoseStatus = GlucoseStatus().getGlucoseStatusData()
             if (lastBG != null) {
                 line1_aa = lastBG.valueToUnitsToString(units)
                 line1 = line1_aa
