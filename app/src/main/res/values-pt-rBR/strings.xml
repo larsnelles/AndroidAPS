@@ -742,7 +742,7 @@
     <string name="basalprofilenotaligned">Valores das basais não definidos por horas: %1$s</string>
     <string name="zerovalueinprofile">Perfil inválido: %1$s</string>
     <string name="combo_programming_bolus">A programar a bomba para injectar o bolus</string>
-    <string name="combo_refresh">Actualizar</string>
+    <string name="combo_refresh">Atualizar</string>
     <string name="combo_pump_state_label">Estado</string>
     <string name="combo_pump_activity_label">Atividades</string>
     <string name="combo_no_pump_connection">Sem conexão há %1$d min</string>
